@@ -102,6 +102,8 @@ def main():
                         help='Inverse labeled-point frequency exponent; 0 disables balancing')
     parser.add_argument('--odpt_class_weight_max', default=4.0, type=float,
                         help='Symmetric clipping bound before normalizing class weights')
+    parser.add_argument('--odpt_class_quota', default=0, type=int,
+                        help='Per-class extension quota; 0 disables quota sampling')
 
     # Model
     parser.add_argument('--model_config', default='gru_10,f_8', help='Defines the model as a sequence of layers, see graphnet.py for definitions of respective layers and acceptable arguments. In short: rectype_repeats_mv_layernorm_ingate_concat, with rectype the type of recurrent unit [gru/crf/lstm], repeats the number of message passing iterations, mv (default True) the use of matrix-vector (mv) instead vector-vector (vv) edge filters, layernorm (default True) the use of layernorms in the recurrent units, ingate (default True) the use of input gating, concat (default True) the use of state concatenation')
@@ -335,7 +337,7 @@ def main():
                     seed_idx = torch.empty(0, dtype=torch.long, device=outputs.device)
                     seed_label = torch.empty(0, dtype=torch.long, device=outputs.device)
                 # 每类扩展配额:与标注点计数的反比权重成正比,保证稀有类获得伪标签
-                if args.dataset == 'odpt_hg':
+                if args.dataset == 'odpt_hg' and args.odpt_class_quota:
                     class_quota = np.ceil(
                         args.single_ext_max * train_dataset.class_weights /
                         train_dataset.class_weights.sum())
