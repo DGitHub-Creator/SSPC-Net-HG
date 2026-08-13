@@ -45,9 +45,10 @@ python -u main.py \
   --ptn_nfeat_stn 14 \
   --extension_th 0.9 \
   --odpt_prototype_seeds 1 \
-  --odpt_seed_confidence 0.85 \
-  --odpt_seed_margin 0.05 \
-  --odpt_seed_max_per_class 3 \
+  --odpt_seed_confidence 0.9 \
+  --odpt_seed_margin 0.1 \
+  --odpt_seed_max_per_class 6 \
+  --odpt_class_quota 1 \
   --ext_epoch_gap 40 \
   --ext_drop 0.95 \
   --seed 1 \

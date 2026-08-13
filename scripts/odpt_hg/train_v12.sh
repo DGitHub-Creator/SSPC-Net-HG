@@ -36,7 +36,7 @@ python -u main.py \
   --odpt_class_balance_power 0.8 \
   --odpt_class_weight_max 5.0 \
   --lr 0.01 \
-  --lr_steps '[275,320]' \
+  --lr_steps '[320,370]' \
   --nworkers 4 \
   --test_nth_epoch 0 \
   --test_multisamp_n 10 \
@@ -45,9 +45,10 @@ python -u main.py \
   --ptn_nfeat_stn 14 \
   --extension_th 0.9 \
   --odpt_prototype_seeds 1 \
-  --odpt_seed_confidence 0.85 \
-  --odpt_seed_margin 0.05 \
-  --odpt_seed_max_per_class 3 \
+  --odpt_seed_confidence 0.9 \
+  --odpt_seed_margin 0.1 \
+  --odpt_seed_max_per_class 6 \
+  --odpt_class_quota 1 \
   --ext_epoch_gap 40 \
   --ext_drop 0.95 \
   --seed 1 \
