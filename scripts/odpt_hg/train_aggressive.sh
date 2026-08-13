@@ -11,8 +11,8 @@ case "${budget}" in
 esac
 
 repo_root=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
-data_root=/home/dzx/data/odpt_hg_sspc
-split_root=/home/dzx/data/odpt_hg_semigmm/splits
+data_root=/path/to/odpt-hg-sspc
+split_root=/path/to/odpt-hg-data/splits
 output_dir="${repo_root}/results/odpt_hg/${budget}pct/${run_name}"
 
 source "${HOME}/miniconda3/etc/profile.d/conda.sh"
