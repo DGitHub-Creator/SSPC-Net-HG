@@ -1,0 +1,385 @@
+{
+  "classes": [
+    "pipeline",
+    "steel_frame",
+    "elbow_pipe",
+    "valve_guardrail",
+    "gate_valve",
+    "Christmas_tree_body"
+  ],
+  "expected_test_points": 2757311,
+  "runs": [
+    {
+      "SemiGMMPoint": {
+        "OA": 0.7684,
+        "mAcc": 0.6242,
+        "mIoU": 0.4558
+      },
+      "budget": 10,
+      "dataset": "ODPT-HG",
+      "epochs": 400,
+      "method": "SSPC-Net-Improved-v1b",
+      "metrics": {
+        "OA": 0.8610885750646191,
+        "classes": [
+          {
+            "IoU": 0.6781278529696294,
+            "accuracy": 0.7860397793495778,
+            "name": "pipeline",
+            "predicted": 449261,
+            "support": 475322,
+            "true_positive": 373622
+          },
+          {
+            "IoU": 0.3757634292531887,
+            "accuracy": 0.43894669311486534,
+            "name": "steel_frame",
+            "predicted": 164657,
+            "support": 271222,
+            "true_positive": 119052
+          },
+          {
+            "IoU": 0.7842168725330781,
+            "accuracy": 0.9637106865771252,
+            "name": "elbow_pipe",
+            "predicted": 300208,
+            "support": 251727,
+            "true_positive": 242592
+          },
+          {
+            "IoU": 0.2136497403887608,
+            "accuracy": 0.35349212256543855,
+            "name": "valve_guardrail",
+            "predicted": 97509,
+            "support": 96732,
+            "true_positive": 34194
+          },
+          {
+            "IoU": 0.6104188038000089,
+            "accuracy": 0.6451676770343273,
+            "name": "gate_valve",
+            "predicted": 74469,
+            "support": 106067,
+            "true_positive": 68431
+          },
+          {
+            "IoU": 0.9085467608882055,
+            "accuracy": 0.9872494041732611,
+            "name": "Christmas_tree_body",
+            "predicted": 1671207,
+            "support": 1556241,
+            "true_positive": 1536398
+          }
+        ],
+        "confusion_matrix": [
+          [
+            373622,
+            21761,
+            29188,
+            39886,
+            3,
+            10862
+          ],
+          [
+            27531,
+            119052,
+            18533,
+            21263,
+            1537,
+            83306
+          ],
+          [
+            5898,
+            662,
+            242592,
+            1774,
+            25,
+            776
+          ],
+          [
+            42209,
+            7927,
+            9822,
+            34194,
+            0,
+            2580
+          ],
+          [
+            0,
+            0,
+            0,
+            351,
+            68431,
+            37285
+          ],
+          [
+            1,
+            15255,
+            73,
+            41,
+            4473,
+            1536398
+          ]
+        ],
+        "evaluated_points": 2757311,
+        "mAcc": 0.6957677271357658,
+        "mIoU": 0.5951205766388119
+      },
+      "prediction_shapes": {
+        "Area_3_conferenceRoom_20": [
+          909
+        ],
+        "Area_3_conferenceRoom_21": [
+          760
+        ],
+        "Area_3_conferenceRoom_22": [
+          606
+        ]
+      },
+      "protocol": "Area 1 train; Area 3 final-only; 10-sample evaluation",
+      "reference": {
+        "OA": 0.8679601249188068,
+        "mAcc": 0.7281457001947006,
+        "mIoU": 0.6247218552962692
+      },
+      "reference_name": "SSPC-Net original",
+      "run_dir": "results/odpt_hg/10pct/improved-v1b-seed1",
+      "run_id": "improved-v1b-seed1",
+      "seed": 1,
+      "training_evidence": {
+        "command_line": {
+          "ODPT_HG_PATH": "/path/to/odpt-hg-sspc",
+          "ODPT_HG_SPLIT_ROOT": "/path/to/odpt-hg-data/splits",
+          "batch_size": "2",
+          "data_mode": "voxel",
+          "dataset": "odpt_hg",
+          "epochs": "400",
+          "ext_drop": "0.95",
+          "ext_epoch_gap": "40",
+          "extension_th": "0.9",
+          "lr": "0.01",
+          "lr_steps": "[275,320]",
+          "model_config": "gru_10,f_6",
+          "nworkers": "4",
+          "odir": "results/odpt_hg/10pct/improved-v1b-seed1",
+          "odpt_budget": "10",
+          "odpt_class_balance_power": "0.5",
+          "odpt_class_weight_max": "4.0",
+          "odpt_prototype_seeds": "1",
+          "odpt_seed_confidence": "0.85",
+          "odpt_seed_margin": "0.05",
+          "odpt_seed_max_per_class": "3",
+          "odpt_steps_per_epoch": "18",
+          "ptn_nfeat_stn": "14",
+          "save_nth_epoch": "40",
+          "seed": "1",
+          "test_multisamp_n": "10",
+          "test_nth_epoch": "0"
+        },
+        "final_epoch": 399,
+        "final_loss": 1.8447447882758248,
+        "label_extension": {
+          "final_extension": {
+            "checks": 162,
+            "generated_points": 8106,
+            "nonempty_checks": 162
+          },
+          "prototype_seeds": {
+            "checks": 162,
+            "generated_points": 2778,
+            "nonempty_checks": 162
+          }
+        }
+      }
+    },
+    {
+      "SemiGMMPoint": {
+        "OA": 0.7569,
+        "mAcc": 0.6773,
+        "mIoU": 0.4644
+      },
+      "budget": 20,
+      "dataset": "ODPT-HG",
+      "epochs": 400,
+      "method": "SSPC-Net-Improved-v1b",
+      "metrics": {
+        "OA": 0.8709717547277039,
+        "classes": [
+          {
+            "IoU": 0.6778239586537024,
+            "accuracy": 0.8299657916107397,
+            "name": "pipeline",
+            "predicted": 501190,
+            "support": 475322,
+            "true_positive": 394501
+          },
+          {
+            "IoU": 0.42739812572391284,
+            "accuracy": 0.5237960047488773,
+            "name": "steel_frame",
+            "predicted": 203238,
+            "support": 271222,
+            "true_positive": 142065
+          },
+          {
+            "IoU": 0.740533389264452,
+            "accuracy": 0.911682100052835,
+            "name": "elbow_pipe",
+            "predicted": 287673,
+            "support": 251727,
+            "true_positive": 229495
+          },
+          {
+            "IoU": 0.2514540360764782,
+            "accuracy": 0.31733035603523135,
+            "name": "valve_guardrail",
+            "predicted": 56038,
+            "support": 96732,
+            "true_positive": 30696
+          },
+          {
+            "IoU": 0.6821134652425145,
+            "accuracy": 0.7345451459926273,
+            "name": "gate_valve",
+            "predicted": 86064,
+            "support": 106067,
+            "true_positive": 77911
+          },
+          {
+            "IoU": 0.9239898649118868,
+            "accuracy": 0.9811282442757902,
+            "name": "Christmas_tree_body",
+            "predicted": 1623108,
+            "support": 1556241,
+            "true_positive": 1526872
+          }
+        ],
+        "confusion_matrix": [
+          [
+            394501,
+            29617,
+            33604,
+            14000,
+            0,
+            3600
+          ],
+          [
+            35070,
+            142065,
+            20464,
+            11232,
+            3,
+            62388
+          ],
+          [
+            15654,
+            5697,
+            229495,
+            69,
+            1,
+            811
+          ],
+          [
+            55651,
+            4994,
+            4110,
+            30696,
+            0,
+            1281
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            77911,
+            28156
+          ],
+          [
+            314,
+            20865,
+            0,
+            41,
+            8149,
+            1526872
+          ]
+        ],
+        "evaluated_points": 2757311,
+        "mAcc": 0.7164079404526834,
+        "mIoU": 0.6172188066454911
+      },
+      "prediction_shapes": {
+        "Area_3_conferenceRoom_20": [
+          909
+        ],
+        "Area_3_conferenceRoom_21": [
+          760
+        ],
+        "Area_3_conferenceRoom_22": [
+          606
+        ]
+      },
+      "protocol": "Area 1 train; Area 3 final-only; 10-sample evaluation",
+      "reference": {
+        "OA": 0.8604586134824834,
+        "mAcc": 0.714310539836641,
+        "mIoU": 0.6070777892059215
+      },
+      "reference_name": "SSPC-Net original",
+      "run_dir": "results/odpt_hg/20pct/improved-v1b-seed1",
+      "run_id": "improved-v1b-seed1",
+      "seed": 1,
+      "training_evidence": {
+        "command_line": {
+          "ODPT_HG_PATH": "/path/to/odpt-hg-sspc",
+          "ODPT_HG_SPLIT_ROOT": "/path/to/odpt-hg-data/splits",
+          "batch_size": "2",
+          "data_mode": "voxel",
+          "dataset": "odpt_hg",
+          "epochs": "400",
+          "ext_drop": "0.95",
+          "ext_epoch_gap": "40",
+          "extension_th": "0.9",
+          "lr": "0.01",
+          "lr_steps": "[275,320]",
+          "model_config": "gru_10,f_6",
+          "nworkers": "4",
+          "odir": "results/odpt_hg/20pct/improved-v1b-seed1",
+          "odpt_budget": "20",
+          "odpt_class_balance_power": "0.5",
+          "odpt_class_weight_max": "4.0",
+          "odpt_prototype_seeds": "1",
+          "odpt_seed_confidence": "0.85",
+          "odpt_seed_margin": "0.05",
+          "odpt_seed_max_per_class": "3",
+          "odpt_steps_per_epoch": "18",
+          "ptn_nfeat_stn": "14",
+          "save_nth_epoch": "40",
+          "seed": "1",
+          "test_multisamp_n": "10",
+          "test_nth_epoch": "0"
+        },
+        "final_epoch": 399,
+        "final_loss": 1.8411344620916579,
+        "label_extension": {
+          "final_extension": {
+            "checks": 162,
+            "generated_points": 8114,
+            "nonempty_checks": 162
+          },
+          "prototype_seeds": {
+            "checks": 162,
+            "generated_points": 2745,
+            "nonempty_checks": 162
+          }
+        }
+      }
+    }
+  ],
+  "status": "ok",
+  "test_scenes": [
+    "Area_3_conferenceRoom_20",
+    "Area_3_conferenceRoom_21",
+    "Area_3_conferenceRoom_22"
+  ]
+}

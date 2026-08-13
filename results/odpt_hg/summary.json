@@ -1,0 +1,345 @@
+{
+  "classes": [
+    "pipeline",
+    "steel_frame",
+    "elbow_pipe",
+    "valve_guardrail",
+    "gate_valve",
+    "Christmas_tree_body"
+  ],
+  "expected_test_points": 2757311,
+  "runs": [
+    {
+      "SemiGMMPoint": {
+        "OA": 0.7684,
+        "mAcc": 0.6242,
+        "mIoU": 0.4558
+      },
+      "budget": 10,
+      "dataset": "ODPT-HG",
+      "epochs": 400,
+      "method": "SSPC-Net",
+      "metrics": {
+        "OA": 0.8679601249188068,
+        "classes": [
+          {
+            "IoU": 0.6729685202449216,
+            "accuracy": 0.8155397814534148,
+            "name": "pipeline",
+            "predicted": 488343,
+            "support": 475322,
+            "true_positive": 387644
+          },
+          {
+            "IoU": 0.37075206855791965,
+            "accuracy": 0.4440790201384843,
+            "name": "steel_frame",
+            "predicted": 174086,
+            "support": 271222,
+            "true_positive": 120444
+          },
+          {
+            "IoU": 0.7720370994940978,
+            "accuracy": 0.9093541813154727,
+            "name": "elbow_pipe",
+            "predicted": 273682,
+            "support": 251727,
+            "true_positive": 228909
+          },
+          {
+            "IoU": 0.3170785243928344,
+            "accuracy": 0.462938841334822,
+            "name": "valve_guardrail",
+            "predicted": 89279,
+            "support": 96732,
+            "true_positive": 44781
+          },
+          {
+            "IoU": 0.6974180700160716,
+            "accuracy": 0.7527883319034195,
+            "name": "gate_valve",
+            "predicted": 88267,
+            "support": 106067,
+            "true_positive": 79846
+          },
+          {
+            "IoU": 0.9180768490717702,
+            "accuracy": 0.9841740450225896,
+            "name": "Christmas_tree_body",
+            "predicted": 1643654,
+            "support": 1556241,
+            "true_positive": 1531612
+          }
+        ],
+        "confusion_matrix": [
+          [
+            387644,
+            29209,
+            22718,
+            32480,
+            0,
+            3271
+          ],
+          [
+            45135,
+            120444,
+            14785,
+            8610,
+            1,
+            82247
+          ],
+          [
+            15902,
+            2772,
+            228909,
+            3367,
+            1,
+            776
+          ],
+          [
+            38162,
+            5918,
+            7270,
+            44781,
+            0,
+            601
+          ],
+          [
+            1074,
+            0,
+            0,
+            0,
+            79846,
+            25147
+          ],
+          [
+            426,
+            15743,
+            0,
+            41,
+            8419,
+            1531612
+          ]
+        ],
+        "evaluated_points": 2757311,
+        "mAcc": 0.7281457001947006,
+        "mIoU": 0.6247218552962692
+      },
+      "prediction_shapes": {
+        "Area_3_conferenceRoom_20": [
+          909
+        ],
+        "Area_3_conferenceRoom_21": [
+          760
+        ],
+        "Area_3_conferenceRoom_22": [
+          606
+        ]
+      },
+      "protocol": "Area 1 train; Area 3 final-only; 10-sample evaluation",
+      "run_dir": "results/odpt_hg/10pct/official-seed1",
+      "run_id": "official-seed1",
+      "seed": 1,
+      "training_evidence": {
+        "command_line": {
+          "ODPT_HG_PATH": "/path/to/odpt-hg-sspc",
+          "ODPT_HG_SPLIT_ROOT": "/path/to/odpt-hg-data/splits",
+          "batch_size": "2",
+          "data_mode": "voxel",
+          "dataset": "odpt_hg",
+          "epochs": "400",
+          "ext_drop": "0.95",
+          "ext_epoch_gap": "40",
+          "extension_th": "0.9",
+          "lr": "0.01",
+          "lr_steps": "[275,320]",
+          "model_config": "gru_10,f_6",
+          "nworkers": "4",
+          "odir": "results/odpt_hg/10pct/official-seed1",
+          "odpt_budget": "10",
+          "ptn_nfeat_stn": "14",
+          "save_nth_epoch": "40",
+          "seed": "1",
+          "test_multisamp_n": "10",
+          "test_nth_epoch": "0"
+        },
+        "final_epoch": 399,
+        "final_loss": 0.07728540926025465,
+        "label_extension": {
+          "checks": 117,
+          "generated_points": 0,
+          "nonempty_checks": 0
+        }
+      }
+    },
+    {
+      "SemiGMMPoint": {
+        "OA": 0.7569,
+        "mAcc": 0.6773,
+        "mIoU": 0.4644
+      },
+      "budget": 20,
+      "dataset": "ODPT-HG",
+      "epochs": 400,
+      "method": "SSPC-Net",
+      "metrics": {
+        "OA": 0.8604586134824834,
+        "classes": [
+          {
+            "IoU": 0.6324808160807321,
+            "accuracy": 0.7291688581635186,
+            "name": "pipeline",
+            "predicted": 419253,
+            "support": 475322,
+            "true_positive": 346590
+          },
+          {
+            "IoU": 0.40192021473369066,
+            "accuracy": 0.516750116141021,
+            "name": "steel_frame",
+            "predicted": 217643,
+            "support": 271222,
+            "true_positive": 140154
+          },
+          {
+            "IoU": 0.7652342570070428,
+            "accuracy": 0.9560754309231827,
+            "name": "elbow_pipe",
+            "predicted": 303448,
+            "support": 251727,
+            "true_positive": 240670
+          },
+          {
+            "IoU": 0.21221720031485666,
+            "accuracy": 0.3456043501633379,
+            "name": "valve_guardrail",
+            "predicted": 94231,
+            "support": 96732,
+            "true_positive": 33431
+          },
+          {
+            "IoU": 0.7081031307550645,
+            "accuracy": 0.754013972300527,
+            "name": "gate_valve",
+            "predicted": 86853,
+            "support": 106067,
+            "true_positive": 79976
+          },
+          {
+            "IoU": 0.9225111163441426,
+            "accuracy": 0.9842505113282582,
+            "name": "Christmas_tree_body",
+            "predicted": 1635883,
+            "support": 1556241,
+            "true_positive": 1531731
+          }
+        ],
+        "confusion_matrix": [
+          [
+            346590,
+            46999,
+            30018,
+            50870,
+            0,
+            845
+          ],
+          [
+            19983,
+            140154,
+            25341,
+            9904,
+            1,
+            75839
+          ],
+          [
+            5101,
+            5153,
+            240670,
+            26,
+            1,
+            776
+          ],
+          [
+            47535,
+            7903,
+            7262,
+            33431,
+            0,
+            601
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            79976,
+            26091
+          ],
+          [
+            44,
+            17434,
+            157,
+            0,
+            6875,
+            1531731
+          ]
+        ],
+        "evaluated_points": 2757311,
+        "mAcc": 0.714310539836641,
+        "mIoU": 0.6070777892059215
+      },
+      "prediction_shapes": {
+        "Area_3_conferenceRoom_20": [
+          909
+        ],
+        "Area_3_conferenceRoom_21": [
+          760
+        ],
+        "Area_3_conferenceRoom_22": [
+          606
+        ]
+      },
+      "protocol": "Area 1 train; Area 3 final-only; 10-sample evaluation",
+      "run_dir": "results/odpt_hg/20pct/official-seed1",
+      "run_id": "official-seed1",
+      "seed": 1,
+      "training_evidence": {
+        "command_line": {
+          "ODPT_HG_PATH": "/path/to/odpt-hg-sspc",
+          "ODPT_HG_SPLIT_ROOT": "/path/to/odpt-hg-data/splits",
+          "batch_size": "2",
+          "data_mode": "voxel",
+          "dataset": "odpt_hg",
+          "epochs": "400",
+          "ext_drop": "0.95",
+          "ext_epoch_gap": "40",
+          "extension_th": "0.9",
+          "lr": "0.01",
+          "lr_steps": "[275,320]",
+          "model_config": "gru_10,f_6",
+          "nworkers": "4",
+          "odir": "results/odpt_hg/20pct/official-seed1",
+          "odpt_budget": "20",
+          "ptn_nfeat_stn": "14",
+          "save_nth_epoch": "40",
+          "seed": "1",
+          "test_multisamp_n": "10",
+          "test_nth_epoch": "0"
+        },
+        "final_epoch": 399,
+        "final_loss": 0.09372251791258654,
+        "label_extension": {
+          "checks": 108,
+          "generated_points": 0,
+          "nonempty_checks": 0
+        }
+      }
+    }
+  ],
+  "status": "ok",
+  "test_scenes": [
+    "Area_3_conferenceRoom_20",
+    "Area_3_conferenceRoom_21",
+    "Area_3_conferenceRoom_22"
+  ]
+}

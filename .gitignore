@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+
+# Local experiment outputs and generated graph data are kept outside Git.
+results/
+data/
+
+# Per-point prediction artifacts on the private dataset (never publish)
+/results/odpt_hg/**/predictions_val.h5
+/results/odpt_hg/**/pointwise_cm.npy
+/results/odpt_hg/**/train.log
+
+# Local machine info (never publish)
+/AGENTS.md
+/ODPT_HG_ENVIRONMENT.md
