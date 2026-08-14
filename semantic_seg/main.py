@@ -102,6 +102,8 @@ def main():
                         help='Inverse labeled-point frequency exponent; 0 disables balancing')
     parser.add_argument('--odpt_class_weight_max', default=4.0, type=float,
                         help='Symmetric clipping bound before normalizing class weights')
+    parser.add_argument('--odpt_class_quota', default=0, type=int,
+                        help='Per-class extension quota; 0 disables quota sampling')
 
     # Model
     parser.add_argument('--model_config', default='gru_10,f_8', help='Defines the model as a sequence of layers, see graphnet.py for definitions of respective layers and acceptable arguments. In short: rectype_repeats_mv_layernorm_ingate_concat, with rectype the type of recurrent unit [gru/crf/lstm], repeats the number of message passing iterations, mv (default True) the use of matrix-vector (mv) instead vector-vector (vv) edge filters, layernorm (default True) the use of layernorms in the recurrent units, ingate (default True) the use of input gating, concat (default True) the use of state concatenation')
@@ -334,7 +336,15 @@ def main():
                 else:
                     seed_idx = torch.empty(0, dtype=torch.long, device=outputs.device)
                     seed_label = torch.empty(0, dtype=torch.long, device=outputs.device)
-                output1, weak_label1, output2, weak_label2, extend_idx, _ = extension_accum2(input, outputs, embeddings, weak_label_cat, edges_for_ext, th=args.extension_th, ext_max=args.single_ext_max)
+                # 每类扩展配额:与标注点计数的反比权重成正比,保证稀有类获得伪标签
+                if args.dataset == 'odpt_hg' and args.odpt_class_quota:
+                    class_quota = np.ceil(
+                        args.single_ext_max * train_dataset.class_weights /
+                        train_dataset.class_weights.sum())
+                    class_quota = np.maximum(class_quota, 1).astype(np.int64)
+                else:
+                    class_quota = None
+                output1, weak_label1, output2, weak_label2, extend_idx, _ = extension_accum2(input, outputs, embeddings, weak_label_cat, edges_for_ext, th=args.extension_th, ext_max=args.single_ext_max, class_quota=class_quota)
                 extend_idx = torch.as_tensor(
                     extend_idx, dtype=torch.long, device=outputs.device).reshape(-1)
                 weak_label2 = torch.as_tensor(
@@ -473,9 +483,21 @@ def main():
                     outputs_att_lab, lab_lab, weight=odpt_class_weights)
                 loss_att_meter.add(loss_att_lab_cro.item())
 
+                # 伪标签置信度加权:模型对扩展伪标签类的预测置信度作为样本权重
+                ext_label_sample = ext_label_retain[ext_idxs_retain_sample]
+                ext_feat_source = torch.as_tensor(
+                    ext_idxs_retain, dtype=torch.long, device=outputs.device)
+                ext_conf_raw = outputs[ext_feat_source[ext_idxs_retain_sample], :]
+                if ext_conf_raw.numel() > 0:
+                    ext_conf = F.softmax(ext_conf_raw.detach(), dim=1).gather(
+                        1, ext_label_sample.unsqueeze(1)).squeeze(1)
+                else:
+                    ext_conf = torch.ones(
+                        ext_label_sample.shape[0], device=outputs.device)
                 loss_att_ext_cro = nn.functional.cross_entropy(
-                    outputs_att_ext, ext_label_retain[ext_idxs_retain_sample],
-                    weight=odpt_class_weights)
+                    outputs_att_ext, ext_label_sample,
+                    weight=odpt_class_weights, reduction='none')
+                loss_att_ext_cro = (loss_att_ext_cro * ext_conf).mean()
                 loss_ext_meter.add(loss_att_ext_cro.item())
                 
                 loss = args.loss_w1 * loss1_cro + args.loss_w2 * (loss_att_lab_cro + loss_att_ext_cro)

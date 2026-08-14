@@ -80,7 +80,7 @@ def prototype_seed_indices(score, fea, weak_label, num_sp_list,
     return torch.cat(selected_indices), torch.cat(selected_labels)
 
 
-def extension_accum2(input, score, fea, weak_label, edges, th=0.7, undirected=True, ext_max=80):
+def extension_accum2(input, score, fea, weak_label, edges, th=0.7, undirected=True, ext_max=80, class_quota=None):
     # input: Nsp*c*n
     # score: Nsp*num_classes
     # fea: Nsp*c
@@ -146,6 +146,27 @@ def extension_accum2(input, score, fea, weak_label, edges, th=0.7, undirected=Tr
         weak_label2_sample = weak_label2
         score2_sample = score2
         extend_idx_sample = extend_idx
+
+    if class_quota is not None and torch.is_tensor(weak_label2_sample) and weak_label2_sample.shape[0] > 0:
+        # 按类配额重新采样,保证稀有类别也能获得扩展伪标签
+        num_classes = score.shape[1]
+        per_class_idx = []
+        for c in range(num_classes):
+            cls_mask = weak_label2_sample == c
+            cls_pos = torch.nonzero(cls_mask, as_tuple=False).reshape(-1)
+            if cls_pos.numel() == 0:
+                continue
+            quota_c = int(class_quota[c])
+            if cls_pos.numel() > quota_c:
+                cls_score = score2_sample[cls_pos, c]
+                _, order = torch.sort(cls_score, 0, descending=True)
+                cls_pos = cls_pos[order[:quota_c]]
+            per_class_idx.append(cls_pos)
+        if per_class_idx:
+            balanced = torch.cat(per_class_idx, 0)
+            weak_label2_sample = weak_label2_sample[balanced]
+            score2_sample = score2_sample[balanced, :]
+            extend_idx_sample = extend_idx_sample[balanced]
 
     score1 = score[mask_label, :]
     weak_label1 = weak_label[mask_label]
