@@ -1,6 +1,8 @@
 # SSPC-Net-HG
 
-Official PyTorch implementation of **SSPC-Net: Semi-supervised Semantic 3D Point Cloud Segmentation Network** (AAAI 2021) with hierarchical grouping, by Mingmei Cheng, Le Hui, Jin Xie and Jian Yang. Details are in the [paper](https://arxiv.org/abs/2104.07861).
+This repository is a **reproduction and dataset-adapted version** of **SSPC-Net: Semi-supervised Semantic 3D Point Cloud Segmentation Network** (AAAI 2021, by Mingmei Cheng, Le Hui, Jin Xie and Jian Yang), modified for the custom ODPT-HG dataset. It is NOT the official code released by the paper authors. Details of the original method are in the [paper](https://arxiv.org/abs/2104.07861).
+
+> 说明：本仓库是基于原论文方法、为适配自定义 ODPT-HG 数据集而修改后的复现与适配版本，并非论文作者发布的官方代码。
 
 ## Project Overview
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Validate and summarize completed SSPC-Net ODPT-HG official runs.
+"""Validate and summarize completed SSPC-Net ODPT-HG full runs.
 
 The final metrics are independently recomputed from ``pointwise_cm.npy``.
 Rows of that matrix are ground-truth classes and columns are predictions.
@@ -323,7 +323,7 @@ def pct(value):
 def write_markdown(path, report):
     method = report["runs"][0]["method"] if report["runs"] else "SSPC-Net"
     lines = [
-        "# {} ODPT-HG official results".format(method),
+        "# {} ODPT-HG full-run results (adapted implementation)".format(method),
         "",
         "Status: **verified**. Metrics were independently recomputed from the saved point-weighted confusion matrices.",
         "",

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """Build SSPC-Net superpoint graphs from the canonical ODPT-HG text files.
 
-The geometric partition follows the official SPGraph release implementation.
+The geometric partition follows the original SPGraph release implementation.
 Labels in the graph retain original (pre-voxelization) point counts so final
 metrics are weighted over the same Area 3 points as the SemiGMMPoint protocol.
 """

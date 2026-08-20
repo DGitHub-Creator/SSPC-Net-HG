@@ -1,4 +1,6 @@
-# SSPC-Net ODPT-HG official results
+# SSPC-Net ODPT-HG full-run results (adapted implementation)
+
+Note: results were produced by the dataset-adapted SSPC-Net implementation (modified for the custom ODPT-HG dataset), not the paper authors' official code.
 
 Status: **verified**. Metrics were independently recomputed from the saved point-weighted confusion matrices.
 
